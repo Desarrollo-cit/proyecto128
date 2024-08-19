@@ -45,3 +45,4 @@
     </div>
 </div>
 <script src="<?= asset('./build/js/producto/index.js') ?>"></script>
+<script src="<?= asset('./build/js/clientes/index.js') ?>"></script>
