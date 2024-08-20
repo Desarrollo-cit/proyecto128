@@ -175,7 +175,7 @@ class ActiveRecord
     public function eliminar()
     {
         $idQuery = static::$idTabla ?? 'id';
-        $query = "DELETE FROM "  . static::$tabla . " WHERE $idQuery = " . self::$db->quote($this->$idTabla);
+        $query = "DELETE FROM "  . static::$tabla . " WHERE $idQuery = " . self::$db->quote($this->$idQuery);
         $resultado = self::$db->exec($query);
         return $resultado;
     }
