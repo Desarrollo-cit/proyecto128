@@ -15,6 +15,10 @@ class ProductoController
             'productos' => $productos
         ]);
     }
+    public static function grafica(Router $router)
+    {
+        $router->render('productos/grafica', []);
+    }
 
     public static function guardarAPI()
     {
@@ -44,6 +48,28 @@ class ProductoController
             // ORM - ELOQUENT
             // $productos = Producto::all();
             $productos = Producto::obtenerProductosconQuery();
+            http_response_code(200);
+            echo json_encode([
+                'codigo' => 1,
+                'mensaje' => 'Datos encontrados',
+                'detalle' => '',
+                'datos' => $productos
+            ]);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode([
+                'codigo' => 0,
+                'mensaje' => 'Error al buscar productos',
+                'detalle' => $e->getMessage(),
+            ]);
+        }
+    }
+    public static function graficaAPI()
+    {
+        try {
+            // ORM - ELOQUENT
+            // $productos = Producto::all();
+            $productos = Producto::productosResumen();
             http_response_code(200);
             echo json_encode([
                 'codigo' => 1,

@@ -11,6 +11,8 @@ $router->setBaseURL('/' . $_ENV['APP_NAME']);
 
 $router->get('/', [AppController::class, 'index']);
 $router->get('/producto', [ProductoController::class, 'index']);
+$router->get('/producto/grafica', [ProductoController::class, 'grafica']);
+$router->get('/API/producto/grafica', [ProductoController::class, 'graficaAPI']);
 $router->get('/API/producto/buscar', [ProductoController::class, 'buscarAPI']);
 $router->post('/API/producto/guardar', [ProductoController::class, 'guardarAPI']);
 $router->post('/API/producto/modificar', [ProductoController::class, 'modificarAPI']);

@@ -27,4 +27,10 @@ class Producto extends ActiveRecord
         $sql = "SELECT * FROM productos where situacion = 1";
         return self::fetchArray($sql);
     }
+
+    public static function productosResumen()
+    {
+        $sql = "SELECT nombre as producto, sum(detalle_cantidad) as cantidad from detalle_ventas inner join productos on detalle_producto = id where detalle_situacion = 1 group by nombre";
+        return self::fetchArray($sql);
+    }
 }
